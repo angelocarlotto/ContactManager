@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
 namespace ContactList.Data;
@@ -13,5 +14,9 @@ public class Contact
     [ValidateNever]
     public Category Category { get; set; }
     public int CategoryId { get; set; }
+
+    [NotMapped]
+    public string Slug => $"{FirstName}-{LastName}".ToLower().Replace(" ", "-");
+
 
 }

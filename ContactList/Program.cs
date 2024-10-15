@@ -1,7 +1,15 @@
 ﻿using ContactList.Data;
+using Microsoft.AspNetCore.Rewrite;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Configure lowercase URLs and trailing slashes
+builder.Services.AddRouting(options =>
+{
+    options.LowercaseUrls = true;
+    options.AppendTrailingSlash = true;
+});
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -21,6 +29,11 @@ if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
 }
+
+// var newUrl = new RewriteOptions().AddRewrite ("new", "Contact/Create", false);
+// app. UseRewriter(newUrl);
+
+
 app.UseStaticFiles();
 
 app.UseRouting();
@@ -29,7 +42,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Contact}/{action=Index}/{id?}");
+    pattern: "{controller=Contact}/{action=Index}/{id?}/{slug?}");
 
 app.Run();
 

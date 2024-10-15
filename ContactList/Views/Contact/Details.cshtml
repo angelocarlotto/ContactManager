@@ -49,7 +49,7 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit"  type="button" class="btn btn-success"  asp-route-id="@Model?.ContactId">Edit</a> 
-    <a asp-action="Delete"  type="button" class="btn btn-danger"  asp-route-id="@Model?.ContactId">Delete</a> 
+    <a asp-action="Edit"  type="button" class="btn btn-success"  asp-route-id="@Model?.ContactId"  asp-route-slug="@Model.Slug">Edit</a> 
+    <a asp-action="Delete"  type="button" class="btn btn-danger"  asp-route-id="@Model?.ContactId"  asp-route-slug="@Model.Slug">Delete</a> 
     <a asp-action="Index"  type="button" class="btn btn-primary" >Home</a>
 </div>

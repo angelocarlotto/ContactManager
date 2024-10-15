@@ -26,7 +26,7 @@ namespace ContactList.Controllers
         }
 
         // GET: Contact/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int? id,string? slug)
         {
             if (id == null)
             {
@@ -72,7 +72,7 @@ namespace ContactList.Controllers
         }
 
         // GET: Contact/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int? id,string? slug)
         {
             if (id == null)
             {

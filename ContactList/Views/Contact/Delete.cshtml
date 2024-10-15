@@ -46,6 +46,6 @@
     <form asp-action="Delete">
         <input type="hidden" asp-for="ContactId" />
         <input type="submit" value="Delete" type="button"  class="btn btn-danger" />
-        <a asp-action="Details" type="button" class="btn btn-warning" asp-route-id="@Model.ContactId">Cancel Delete</a>
+        <a asp-action="Details" type="button" class="btn btn-warning" asp-route-id="@Model.ContactId"  asp-route-slug="@Model.Slug">Cancel Delete</a>
     </form>
 </div>
