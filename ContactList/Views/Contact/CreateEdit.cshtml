@@ -1,0 +1,61 @@
+@model ContactList.Data.Contact
+
+@{
+    ViewData["Title"] = Model.ContactId == 0 ? "Create" : "Edit";
+}
+
+<h1>@(Model.ContactId==0? "Create Contact" : "Edit Contact")</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="@(Model.ContactId==0? "Create" : "Edit")">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ContactId" />
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Phone" class="control-label"></label>
+                <input asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CategoryId" class="control-label"></label>
+                <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" type="button" class="btn btn-success" />
+                @if (Model.ContactId == 0)
+                {
+                    <a asp-action="Index" type="button" class="btn btn-warning">Cancel Create</a>
+                }
+                else
+                {
+                    <a asp-action="Details" type="button" class="btn btn-warning" asp-route-id="@Model.ContactId">Cancel Edit</a>
+                }
+            </div>
+            <div class="form-group">
+                @Html.ValidationSummary()
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
