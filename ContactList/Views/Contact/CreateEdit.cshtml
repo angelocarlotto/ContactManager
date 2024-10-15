@@ -41,11 +41,11 @@
                 <input type="submit" value="Save" type="button" class="btn btn-success" />
                 @if (Model.ContactId == 0)
                 {
-                    <a asp-action="Index" type="button" class="btn btn-warning">Cancel Create</a>
+                    <a asp-action="Index" type="button" class="btn btn-warning">Cancel</a>
                 }
                 else
                 {
-                    <a asp-action="Details" type="button" class="btn btn-warning" asp-route-id="@Model.ContactId"  asp-route-slug="@Model.Slug">Cancel Edit</a>
+                    <a asp-action="Details" type="button" class="btn btn-warning" asp-route-id="@Model.ContactId"  asp-route-slug="@Model.Slug">Cancel</a>
                 }
             </div>
             <div class="form-group">

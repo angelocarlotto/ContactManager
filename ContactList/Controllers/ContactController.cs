@@ -26,7 +26,7 @@ namespace ContactList.Controllers
         }
 
         // GET: Contact/Details/5
-        public async Task<IActionResult> Details(int? id,string? slug)
+        public async Task<IActionResult> Details(int? id, string? slug)
         {
             if (id == null)
             {
@@ -49,7 +49,7 @@ namespace ContactList.Controllers
         {
             ViewData["CategoryId"] = new SelectList(_context.Categorys, "CategoryId", "Description");
             //return View();
-            return View("CreateEdit",new Contact{ });
+            return View("CreateEdit", new Contact { });
         }
 
         // POST: Contact/Create
@@ -72,7 +72,7 @@ namespace ContactList.Controllers
         }
 
         // GET: Contact/Edit/5
-        public async Task<IActionResult> Edit(int? id,string? slug)
+        public async Task<IActionResult> Edit(int? id, string? slug)
         {
             if (id == null)
             {
@@ -126,7 +126,7 @@ namespace ContactList.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Details), new { id = contact.ContactId, slug = contact.Slug });
             }
             ViewData["CategoryId"] = new SelectList(_context.Categorys, "CategoryId", "Description", contact.CategoryId);
             return View("CreateEdit", contact);
